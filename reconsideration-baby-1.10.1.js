@@ -271,8 +271,10 @@ function getRidePoints(ride) {
         return result;
     }
 
-    for (var i = 0; i < ride.stations.length; i++) {
-        var station = ride.stations[i];
+    // The native stations getter creates a new array on every access.
+    var stations = ride.stations;
+    for (var i = 0; i < stations.length; i++) {
+        var station = stations[i];
 
         if (station === undefined || station === null) {
             continue;
